@@ -1,8 +1,18 @@
 {
   "name": "jevtown",
   "version": "1.0.0",
+  "description": "A tiny 3D mayor simulator where you, or an AI mayor named Jev, run a miniature city.",
   "private": true,
+  "license": "MIT",
+  "author": "Muhammad Junaid",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IjunaidI/TinyOps.git"
+  },
   "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
