@@ -1,0 +1,20 @@
+.showcase-capture {
+  position: fixed; left: 16px; bottom: 16px; z-index: 100000;
+  width: 320px; max-width: calc(100vw - 32px); padding: 14px;
+  border: 1px solid #8ca9b9; border-radius: 12px;
+  background: #f4f8fc; color: #173447;
+  box-shadow: 0 5px 24px #13293533;
+  font: 12px/1.45 system-ui, sans-serif;
+}
+.showcase-capture-heading { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.showcase-capture-heading strong { font-size: 13px; }
+.showcase-capture.is-recording .showcase-capture-heading span { color: #a33b34; }
+.showcase-capture label { display: flex; align-items: center; gap: 10px; }
+.showcase-capture input { flex: 1; min-width: 0; padding: 6px; border: 1px solid #adc0cb; border-radius: 5px; background: white; color: #173447; font: inherit; }
+.showcase-capture-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.showcase-capture button { padding: 7px 10px; border: 1px solid #adc0cb; border-radius: 5px; background: white; color: #173447; font: inherit; cursor: pointer; }
+.showcase-capture button:disabled { opacity: .6; cursor: wait; }
+.showcase-capture a { color: #1f657f; }
+.showcase-capture p { margin: 10px 0 0; font-size: 11px; overflow-wrap: anywhere; }
+.showcase-capture-reveal { position: fixed; z-index: 100000; bottom: 0; left: 0; width: 14px; height: 14px; padding: 0; border: 0; background: transparent; color: #c84141; opacity: .08; font-size: 8px; cursor: pointer; }
+.showcase-capture-reveal:hover, .showcase-capture-reveal:focus-visible { opacity: 1; }

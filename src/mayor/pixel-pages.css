@@ -1,0 +1,1212 @@
+/* Pixel City: quests, city management and dialogue screens. */
+.mayor-app :is(.civic-page, .citizen-chat-page, .civic-modal-content) {
+  scrollbar-color: var(--game-line) var(--game-bg);
+  color: var(--game-text);
+  font-size: 16px;
+}
+.mayor-app :is(.civic-page, .citizen-chat-page) {
+  background-color: var(--game-bg);
+  background-image: radial-gradient(#8194aa20 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+.mayor-app :is(.civic-page, .citizen-chat-page, .civic-modal-content) p {
+  color: var(--game-muted);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.mayor-app :is(.civic-page, .citizen-chat-page, .civic-modal-content) small {
+  color: var(--game-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.mayor-app
+  :is(.civic-page, .citizen-chat-page, .civic-modal-content)
+  :is(h2, h3, h4) {
+  color: var(--game-text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+.mayor-app .civic-page-heading h1 {
+  color: var(--game-text);
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: -0.4px;
+  line-height: 1.4;
+}
+.mayor-app .civic-page-heading > .civic-secondary {
+  font-size: 14px;
+}
+.mayor-app
+  :is(
+    .civic-search,
+    .civic-connect form input,
+    .citizen-composer textarea,
+    .citizen-manual-review select
+  ) {
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+  background: var(--game-bg);
+  color: var(--game-text);
+  box-shadow: inset 3px 3px 0 var(--game-border);
+  font-size: 16px;
+}
+.mayor-app
+  :is(
+    .civic-search input,
+    .civic-connect form input,
+    .citizen-composer textarea
+  )::placeholder {
+  color: var(--game-muted);
+}
+.mayor-app .civic-search input {
+  color: var(--game-text);
+  font-size: 15px;
+}
+.mayor-app :is(.civic-segments, .civic-funding-levels) {
+  background: var(--game-border);
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+}
+.mayor-app
+  :is(
+    .civic-segments button,
+    .civic-funding-levels > button,
+    .civic-catalog-filters > button
+  ) {
+  border-radius: 0;
+  font-size: 13px;
+  color: var(--game-muted);
+}
+.mayor-app
+  :is(
+    .civic-segments button.selected,
+    .civic-funding-levels > button.selected,
+    .civic-catalog-filters > button.selected
+  ) {
+  color: var(--game-text);
+  background: var(--game-cyan-soft);
+  box-shadow: inset 0 -3px 0 #a5c5cd;
+}
+.mayor-app
+  :is(
+    .civic-segments button,
+    .civic-funding-levels > button,
+    .civic-catalog-filters > button
+  ):hover:not(.selected) {
+  background: var(--game-panel-raised);
+  color: var(--game-text);
+}
+
+/* Requests are quest cards, with a clear status, sender and reward. */
+.mayor-app .civic-request-tile {
+  border-top: 4px solid var(--game-cyan);
+  box-shadow: 4px 4px 0 var(--game-border);
+  transition:
+    transform 100ms,
+    box-shadow 100ms;
+}
+.mayor-app .civic-request-tile:hover {
+  transform: translate(-2px, -2px);
+  background: var(--game-panel-raised);
+  box-shadow: 6px 6px 0 var(--game-border);
+}
+.mayor-app .civic-request-tile:has(.civic-pill.urgent) {
+  border-top-color: var(--game-danger);
+}
+.mayor-app .civic-request-tile:has(.civic-pill.important) {
+  border-top-color: var(--game-gold);
+}
+.mayor-app .civic-request-tile:has(.civic-pill.resolved) {
+  border-top-color: var(--game-lime);
+}
+.mayor-app .civic-request-tile > .civic-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+.mayor-app .civic-request-tile h3 {
+  font-size: 14px;
+  min-height: 42px;
+}
+.mayor-app .civic-request-tile > p {
+  min-height: 74px;
+}
+.mayor-app .civic-request-tile > footer {
+  border-color: var(--game-line);
+}
+.mayor-app .civic-request-tile > footer b {
+  font-size: 14px;
+  color: var(--game-cyan);
+}
+.mayor-app .civic-request-tile > footer > span:last-child {
+  font-size: 12px;
+  color: var(--game-muted);
+}
+.mayor-app .civic-empty {
+  color: var(--game-muted);
+}
+.mayor-app .civic-empty > svg,
+.mayor-app .civic-empty button {
+  color: var(--game-cyan);
+}
+.mayor-app .civic-empty h3 {
+  font-family: var(--font-display);
+  color: var(--game-text);
+  font-size: 16px;
+}
+.mayor-app .civic-empty button {
+  font-size: 15px;
+}
+
+/* City upgrades and resource management. */
+.mayor-app .civic-project-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}
+.mayor-app .civic-project-card {
+  background: var(--game-panel);
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--game-border);
+}
+.mayor-app .civic-project-art {
+  background: #dce8ee;
+  border-bottom: 3px solid var(--game-border);
+}
+.mayor-app .civic-project-art.art-health {
+  background: #e9e1eb;
+}
+.mayor-app
+  :is(.civic-project-art.art-education, .civic-project-art.art-community) {
+  background: #e3ebdf;
+}
+.mayor-app
+  :is(.civic-project-art.art-transport, .civic-project-art.art-authority) {
+  background: #e0e5ef;
+}
+.mayor-app .civic-project-art > span {
+  color: var(--game-text);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.mayor-app .civic-project-art > b {
+  background: var(--game-panel);
+  border: 1px solid var(--game-lime);
+  border-radius: 0;
+  color: var(--game-lime);
+  font-size: 11px;
+}
+.mayor-app .civic-project-body > .civic-eyebrow {
+  color: var(--game-cyan);
+  font-size: 11px;
+}
+.mayor-app .civic-project-body h3 {
+  font-size: 16px;
+}
+.mayor-app .civic-project-body > p {
+  min-height: 68px;
+  font-size: 15px;
+}
+.mayor-app .civic-effects > span {
+  border: 1px solid var(--game-line);
+  border-radius: 0;
+  background: var(--game-bg);
+  color: var(--game-muted);
+  font-size: 12px;
+  padding: 4px 7px;
+}
+.mayor-app .civic-effects > span.positive {
+  background: var(--game-lime-soft);
+  color: var(--game-lime);
+  border-color: #bacdb9;
+}
+.mayor-app .civic-effects > span.negative {
+  background: #f1e2e0;
+  color: var(--game-danger);
+  border-color: #d8b5b2;
+}
+.mayor-app .civic-effects > span.cost {
+  background: var(--game-gold-soft);
+  color: var(--game-gold);
+  border-color: #d6c8a1;
+}
+.mayor-app .civic-project-finance {
+  color: var(--game-muted);
+  font-size: 11px;
+}
+.mayor-app .civic-project-finance > span:last-child {
+  font-size: 12px;
+}
+.mayor-app .civic-project-finance b {
+  color: var(--game-gold);
+  font-size: 21px;
+  letter-spacing: 0;
+}
+.mayor-app .civic-project-body > .civic-secondary {
+  background: var(--game-panel-raised);
+  color: var(--game-cyan);
+  font-size: 14px;
+}
+.mayor-app .civic-project-progress {
+  border-color: var(--game-line);
+}
+.mayor-app .civic-project-progress > span {
+  color: var(--game-lime);
+  font-size: 13px;
+}
+.mayor-app .civic-budget-badge {
+  background: var(--game-panel);
+  border: 2px solid var(--game-gold);
+  border-radius: 0;
+  color: var(--game-gold);
+  font-size: 16px;
+  box-shadow: 3px 3px 0 var(--game-border);
+}
+.mayor-app .civic-budget-layout {
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.5fr);
+}
+.mayor-app .civic-budget-ledger > h2 {
+  font-family: var(--font-body);
+  font-size: 48px;
+  color: var(--game-gold);
+  letter-spacing: 0;
+}
+.mayor-app .civic-budget-line {
+  color: var(--game-muted);
+  font-size: 16px;
+  border-color: var(--game-line);
+}
+.mayor-app .civic-budget-line b,
+.mayor-app .civic-budget-line.total {
+  color: var(--game-text);
+}
+.mayor-app .civic-budget-line.total {
+  font-size: 19px;
+}
+.mayor-app .civic-budget-line b.positive {
+  color: var(--game-lime);
+}
+.mayor-app .civic-budget-line b.negative {
+  color: var(--game-danger);
+}
+.mayor-app .civic-budget-ledger > h3 {
+  font-size: 14px;
+}
+.mayor-app .civic-tax-options > button {
+  background: var(--game-bg);
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+}
+.mayor-app .civic-tax-options > button.selected {
+  background: var(--game-lime-soft);
+  border-color: var(--game-lime);
+  box-shadow: inset 4px 0 0 var(--game-lime);
+}
+.mayor-app .civic-tax-options b {
+  color: var(--game-text);
+  font-size: 17px;
+}
+.mayor-app .civic-tax-options > button > svg {
+  color: var(--game-lime);
+}
+.mayor-app .civic-radio {
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+  background: var(--game-border);
+}
+.mayor-app .civic-departments > h2 {
+  font-size: 19px;
+}
+.mayor-app .civic-department {
+  grid-template-columns: 42px minmax(0, 1fr);
+}
+.mayor-app .civic-department-icon {
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+  background: var(--game-bg);
+  color: var(--game-cyan);
+}
+.mayor-app .civic-department h3 {
+  color: var(--game-text);
+  font-size: 13px;
+}
+.mayor-app .civic-department-health > span {
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.mayor-app .civic-funding-levels {
+  grid-column: 2;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0;
+}
+.mayor-app .civic-funding-levels > button {
+  padding: 9px 12px;
+}
+.mayor-app .civic-funding-levels > button.selected > small {
+  color: var(--game-text);
+}
+.mayor-app .civic-advice-note {
+  background: var(--game-cyan-soft);
+  border: 2px solid #b7d0d7;
+  border-radius: 0;
+  color: var(--game-cyan);
+}
+.mayor-app .civic-advice-note b {
+  color: var(--game-cyan);
+}
+.mayor-app .civic-policy-forecast {
+  /* The original forecast rule is important; retain its existing priority. */
+  color: var(--game-cyan) !important;
+  font-size: 13px !important;
+}
+
+/* Journal and results use compact scoreboard typography. */
+.mayor-app
+  :is(
+    .civic-journal-chart > div:first-child,
+    .civic-chart-legend,
+    .civic-section-title > span,
+    .civic-ledger-day,
+    .civic-ledger details,
+    .civic-ledger summary,
+    .civic-journal-news > article > span
+  ) {
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.mayor-app .civic-journal-chart h3 {
+  color: var(--game-text);
+  font-size: 13px;
+}
+.mayor-app .civic-section-title {
+  font-size: 15px;
+}
+.mayor-app .civic-ledger-day b {
+  color: var(--game-gold);
+  font-size: 28px;
+  font-weight: 600;
+}
+.mayor-app .civic-ledger-top h3 {
+  font-size: 13px;
+}
+.mayor-app .civic-ledger > article > div > strong {
+  font-size: 15px;
+  color: var(--game-lime);
+}
+.mayor-app .civic-ledger details {
+  border-color: var(--game-line);
+}
+.mayor-app .civic-journal-news > h2 {
+  font-size: 20px;
+}
+.mayor-app .civic-journal-news > article {
+  border-color: var(--game-line);
+}
+.mayor-app .civic-journal-news > article > h3 {
+  font-size: 13px;
+}
+
+/* Game dialogue windows: inset title bars and selectable response cards. */
+.mayor-app .civic-modal-backdrop {
+  background: #66768b70;
+  backdrop-filter: none;
+}
+.mayor-app .civic-modal {
+  background: var(--game-panel);
+  border: 3px solid var(--game-cyan);
+  border-radius: 0;
+  box-shadow:
+    8px 8px 0 var(--game-border),
+    inset 0 0 0 3px var(--game-border);
+}
+.mayor-app .civic-modal > header {
+  background: var(--game-panel-raised);
+  border-bottom: 3px solid var(--game-border);
+  padding: 13px 18px;
+}
+.mayor-app .civic-modal > header > .civic-eyebrow {
+  color: var(--game-cyan);
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.mayor-app .civic-modal-content > h2 {
+  font-size: 21px;
+  line-height: 1.4;
+}
+.mayor-app :is(.civic-connect-icon, .civic-election-icon) {
+  background: var(--game-bg);
+  border: 3px solid var(--game-lime);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--game-border);
+  color: var(--game-lime);
+}
+.mayor-app .civic-connect form label {
+  color: var(--game-cyan);
+  font-size: 14px;
+}
+.mayor-app .civic-connect .civic-connect-footnote {
+  font-size: 13px;
+}
+.mayor-app .civic-form-error,
+.mayor-app p.civic-form-error {
+  color: var(--game-danger);
+  background: #f1e2e0;
+  border: 1px solid #d8b5b2;
+  border-radius: 0;
+  font-size: 15px;
+}
+.mayor-app .civic-letter-tags {
+  flex-wrap: wrap;
+}
+.mayor-app .civic-letter-tags > span:not(.civic-pill) {
+  color: var(--game-muted);
+  font-size: 13px;
+}
+.mayor-app .civic-letter-author {
+  border-color: var(--game-line);
+}
+.mayor-app .civic-letter-author > span {
+  border: 2px solid var(--game-cyan);
+  border-radius: 0;
+  background: var(--game-panel-raised);
+  color: var(--game-cyan);
+  font-family: var(--font-body);
+  font-size: 19px;
+}
+.mayor-app .civic-letter-author b {
+  color: var(--game-text);
+  font-size: 16px;
+}
+.mayor-app .civic-letter-author > div:last-child > small {
+  font-size: 12px;
+  letter-spacing: 0;
+}
+.mayor-app .civic-letter-author > div:last-child > b {
+  color: var(--game-cyan);
+  font-size: 13px;
+}
+.mayor-app .civic-letter blockquote {
+  background: var(--game-bg);
+  border: 2px solid var(--game-line);
+  border-left: 5px solid var(--game-cyan);
+  border-radius: 0;
+  color: var(--game-text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  box-shadow: inset 3px 3px 0 var(--game-border);
+}
+.mayor-app :is(.civic-clarification, .civic-inline-paused, .civic-letter-site) {
+  background: var(--game-gold-soft);
+  border: 2px solid #d6c8a1;
+  border-radius: 0;
+  color: var(--game-gold);
+}
+.mayor-app .civic-clarification > span {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.mayor-app
+  :is(.civic-clarification > .civic-secondary, .civic-inline-paused > button) {
+  border: 2px solid var(--game-gold);
+  border-radius: 0;
+  background: var(--game-bg);
+  color: var(--game-gold);
+  font-size: 13px;
+}
+.mayor-app .civic-letter-choices-heading h3 {
+  font-size: 13px;
+}
+.mayor-app .civic-letter-choices-heading > span {
+  color: var(--game-gold);
+  font-size: 14px;
+}
+.mayor-app .civic-letter-options > button {
+  background: var(--game-panel-raised);
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--game-border);
+}
+.mayor-app .civic-letter-options > button:hover:not(:disabled) {
+  background: #e1edf1;
+  border-color: var(--game-cyan);
+  box-shadow: 3px 3px 0 #a5c5cd;
+}
+.mayor-app .civic-letter-options > button:disabled {
+  opacity: 1;
+  background: var(--game-bg);
+  border-color: var(--game-line);
+}
+.mayor-app .civic-letter-options h4 {
+  color: var(--game-text);
+  font-size: 12px;
+}
+.mayor-app .civic-letter-options > button > div:first-child {
+  color: var(--game-cyan);
+}
+.mayor-app .civic-letter-options > button > small {
+  border-color: var(--game-line);
+}
+.mayor-app .civic-letter .civic-effects > span {
+  font-size: 12px;
+}
+.mayor-app .civic-letter-expiry {
+  border-color: var(--game-line);
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.mayor-app .civic-inline-paused {
+  font-size: 15px;
+}
+.mayor-app .civic-letter-resolution {
+  border: 2px solid var(--game-lime);
+  border-radius: 0;
+  background: var(--game-lime-soft);
+}
+.mayor-app .civic-letter-resolution > h3 {
+  font-size: 14px;
+  color: var(--game-lime);
+}
+.mayor-app .civic-letter-site h3 {
+  font-size: 13px;
+}
+.mayor-app .civic-schedule-effect {
+  color: var(--game-lime);
+  font-size: 13px;
+}
+.mayor-app .civic-schedule-effect.delayed {
+  color: var(--game-gold);
+}
+
+/* Almanac, handbook and end-of-term scoreboard. */
+.mayor-app .civic-catalog-filters > button {
+  background: var(--game-bg);
+  border: 1px solid var(--game-line);
+}
+.mayor-app .civic-catalog-list > details {
+  background: var(--game-bg);
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+}
+.mayor-app .civic-catalog-list > details[open] {
+  border-color: var(--game-cyan);
+}
+.mayor-app .civic-catalog-list summary > span:nth-child(2) {
+  min-width: 0;
+}
+.mayor-app .civic-catalog-list summary b {
+  color: var(--game-text);
+  font-size: 16px;
+  line-height: 1.35;
+}
+.mayor-app .civic-catalog-list summary > svg {
+  color: var(--game-cyan);
+}
+.mayor-app .civic-catalog-list summary > .civic-pill {
+  font-size: 11px;
+}
+.mayor-app .civic-catalog-options > span {
+  background: var(--game-panel);
+  border: 1px solid var(--game-line);
+  border-radius: 0;
+}
+.mayor-app .civic-catalog-options b {
+  color: var(--game-text);
+  font-size: 15px;
+}
+.mayor-app .civic-catalog-options .civic-effects > span {
+  font-size: 11px;
+}
+.mayor-app .civic-catalog-clarification {
+  color: var(--game-gold);
+  font-size: 13px;
+}
+.mayor-app .civic-handbook-grid article > svg {
+  color: var(--game-cyan);
+}
+.mayor-app .civic-handbook-grid h3 {
+  font-size: 16px;
+}
+.mayor-app .civic-handbook-note {
+  border: 2px solid #bacdb9;
+  background: var(--game-lime-soft);
+  border-radius: 0;
+  color: var(--game-lime);
+}
+.mayor-app .civic-election-approval > b {
+  font-family: var(--font-display);
+  color: var(--game-lime);
+  font-size: 56px;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  text-shadow: 4px 4px 0 var(--game-border);
+}
+.mayor-app .civic-election-approval > span {
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.mayor-app .civic-election-approval > strong {
+  background: var(--game-bg);
+  border: 2px solid var(--game-lime);
+  border-radius: 0;
+  color: var(--game-lime);
+  font-size: 17px;
+}
+.mayor-app .civic-election-stats,
+.mayor-app .civic-election-stats > span {
+  border-color: var(--game-line);
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.mayor-app .civic-election-stats b {
+  color: var(--game-gold);
+  font-size: 28px;
+}
+.mayor-app .civic-election-links > button {
+  color: var(--game-cyan);
+  font-size: 14px;
+}
+.mayor-app .civic-save-actions > small {
+  color: var(--game-muted);
+  font-size: 13px;
+}
+
+/* Citizen chat becomes a direct conversation with an RPG mayor. */
+.mayor-app .citizen-conversation {
+  background: var(--game-panel);
+}
+.mayor-app .citizen-conversation > header {
+  background: var(--game-panel-raised);
+  border-bottom: 3px solid var(--game-border);
+}
+.mayor-app .citizen-mayor-avatar {
+  border: 2px solid var(--game-cyan);
+  border-radius: 0;
+  background: var(--game-bg);
+  color: var(--game-cyan);
+  box-shadow: 3px 3px 0 var(--game-border);
+}
+.mayor-app .citizen-conversation > header h2 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--game-text);
+  letter-spacing: 0;
+}
+.mayor-app .citizen-conversation > header p {
+  font-size: 13px;
+}
+.mayor-app .citizen-presence {
+  color: var(--game-muted);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.mayor-app .citizen-presence.live {
+  color: var(--game-lime);
+}
+.mayor-app .citizen-presence.live:before {
+  background: var(--game-lime);
+  border-radius: 0;
+  box-shadow: 0 0 0 2px #54785a15;
+}
+.mayor-app .citizen-messages {
+  background: var(--game-bg);
+  scrollbar-color: var(--game-line) transparent;
+}
+.mayor-app .citizen-introduction > span {
+  color: var(--game-cyan);
+}
+.mayor-app .citizen-introduction b {
+  color: var(--game-text);
+  font-size: 18px;
+}
+.mayor-app .citizen-suggestions > small {
+  color: var(--game-cyan);
+  letter-spacing: 1px;
+}
+.mayor-app .citizen-suggestions > button {
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+  background: var(--game-panel);
+  color: var(--game-text);
+  font-size: 16px;
+  line-height: 1.45;
+  box-shadow: 3px 3px 0 var(--game-border);
+}
+.mayor-app .citizen-suggestions > button:hover {
+  background: var(--game-panel-raised);
+  border-color: var(--game-cyan);
+}
+.mayor-app .citizen-suggestions > button > svg {
+  color: var(--game-cyan);
+}
+.mayor-app .citizen-exchange {
+  border-radius: 0;
+}
+.mayor-app .citizen-exchange.is-selected {
+  outline: 2px solid var(--game-cyan);
+}
+.mayor-app .citizen-message-meta {
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.mayor-app .citizen-user-bubble,
+.mayor-app p.citizen-user-bubble {
+  border: 2px solid #b0c8d6;
+  border-radius: 0;
+  background: var(--game-cyan-soft);
+  color: var(--game-text);
+  font-size: 17px;
+  box-shadow: 4px 4px 0 var(--game-border);
+}
+.mayor-app .citizen-reply {
+  border: 2px solid var(--game-line);
+  border-left: 5px solid var(--game-cyan);
+  border-radius: 0;
+  background: var(--game-panel);
+  box-shadow: 4px 4px 0 var(--game-border);
+}
+.mayor-app .citizen-reply.approved {
+  border-color: #bacdb9;
+  border-left-color: var(--game-lime);
+  background: var(--game-lime-soft);
+}
+.mayor-app .citizen-reply.declined {
+  border-color: #d8b5b2;
+  border-left-color: var(--game-danger);
+  background: #f1e2e0;
+}
+.mayor-app .citizen-reply.deferred {
+  border-color: #d6c8a1;
+  border-left-color: var(--game-gold);
+  background: var(--game-gold-soft);
+}
+.mayor-app .citizen-reply-heading > span:first-child {
+  color: var(--game-cyan);
+  font-size: 15px;
+}
+.mayor-app .citizen-status {
+  color: var(--game-gold);
+  font-size: 12px;
+}
+.mayor-app .citizen-status.approved {
+  color: var(--game-lime);
+}
+.mayor-app .citizen-status.declined {
+  color: var(--game-danger);
+}
+.mayor-app .citizen-model-details {
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.mayor-app .citizen-connection-note {
+  background: var(--game-gold-soft);
+  border-top: 2px solid #d6c8a1;
+  color: var(--game-gold);
+}
+.mayor-app .citizen-connection-note p {
+  color: var(--game-gold);
+  font-size: 13px;
+}
+.mayor-app .citizen-connection-note button {
+  border: 2px solid var(--game-gold);
+  border-radius: 0;
+  background: var(--game-bg);
+  color: var(--game-gold);
+  font-size: 14px;
+}
+.mayor-app .citizen-composer {
+  border-top: 3px solid var(--game-border);
+  background: var(--game-panel);
+}
+.mayor-app .citizen-composer > label {
+  color: var(--game-cyan);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.mayor-app .citizen-composer-controls > label {
+  color: var(--game-muted);
+}
+.mayor-app .citizen-composer-controls select {
+  color: var(--game-text);
+  background: var(--game-panel);
+  font-size: 14px;
+}
+.mayor-app .citizen-composer-controls > .civic-primary {
+  font-size: 14px;
+}
+.mayor-app p.citizen-composer-help {
+  font-size: 12px;
+}
+.mayor-app .citizen-submit-status {
+  color: var(--game-lime);
+  font-size: 14px;
+}
+.mayor-app .citizen-error {
+  /* Match the original form-error priority. */
+  color: var(--game-danger) !important;
+  font-size: 14px !important;
+}
+.mayor-app .citizen-context h2 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--game-text);
+}
+.mayor-app .citizen-budget {
+  color: var(--game-gold);
+}
+.mayor-app .citizen-budget strong {
+  color: var(--game-gold);
+  font-size: 36px;
+}
+.mayor-app p.citizen-budget-flow {
+  color: var(--game-cyan);
+}
+.mayor-app .citizen-context-rule {
+  border-color: var(--game-line);
+}
+.mayor-app .citizen-context-rule b,
+.mayor-app .citizen-outcomes b {
+  color: var(--game-text);
+  font-size: 15px;
+}
+.mayor-app .citizen-context-rule p,
+.mayor-app .citizen-outcomes p {
+  font-size: 15px;
+}
+.mayor-app .citizen-outcomes h3 {
+  font-family: var(--font-display);
+  color: var(--game-cyan);
+  font-size: 14px;
+}
+.mayor-app .citizen-manual-review {
+  border-color: var(--game-line);
+  color: var(--game-muted);
+  font-size: 15px;
+}
+.mayor-app .citizen-manual-review label {
+  color: var(--game-cyan);
+  font-size: 13px;
+}
+.mayor-app .citizen-manual-review > button {
+  background: var(--game-panel-raised);
+  border: 2px solid var(--game-cyan);
+  border-radius: 0;
+  color: var(--game-cyan);
+  font-size: 14px;
+}
+
+/* Active construction is a work-in-progress mission board. */
+.mayor-app .civic-works-desk {
+  border: 2px solid #d6c8a1;
+  border-top: 5px solid var(--game-gold);
+  border-radius: 0;
+  background: #f2f3ef;
+  box-shadow: 5px 5px 0 var(--game-border);
+}
+.mayor-app .civic-works-emblem {
+  background: var(--game-gold-soft);
+  color: var(--game-text);
+  border: 2px solid var(--game-border);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 #d6c8a1;
+}
+.mayor-app .civic-works-desk h2 {
+  font-size: 17px;
+}
+.mayor-app .civic-works-desk header p {
+  font-size: 14px;
+}
+.mayor-app .civic-works-count {
+  color: var(--game-lime);
+  font-size: 14px;
+}
+.mayor-app .civic-works-count.attention {
+  background: var(--game-gold-soft);
+  border: 2px solid #d6c8a1;
+  border-radius: 0;
+  color: var(--game-gold);
+}
+.mayor-app .civic-works-sites > article {
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+  background: var(--game-bg);
+}
+.mayor-app .civic-works-sites > article.needs-attention {
+  border-top: 4px solid var(--game-gold);
+}
+.mayor-app .civic-works-site-heading {
+  color: var(--game-muted);
+  font-size: 14px;
+}
+.mayor-app .civic-works-site-heading b {
+  color: var(--game-gold);
+  font-size: 29px;
+}
+.mayor-app .civic-works-sites h3 {
+  font-size: 13px;
+}
+.mayor-app .civic-works-meter {
+  height: 10px;
+  background: var(--game-border);
+  border: 2px solid var(--game-line);
+  border-radius: 0;
+}
+.mayor-app .civic-works-meter > span {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--game-gold) 0 7px,
+    #ae9868 7px 9px
+  );
+  transition-timing-function: steps(8, end);
+}
+.mayor-app .civic-works-sites article > p {
+  color: var(--game-text);
+  font-size: 14px;
+}
+.mayor-app .civic-works-sites article > p strong {
+  color: var(--game-gold);
+  font-size: 13px;
+}
+.mayor-app .civic-works-issues {
+  border-color: var(--game-line);
+}
+.mayor-app .civic-works-issues button {
+  background: var(--game-gold-soft);
+  color: var(--game-gold);
+  border: 2px solid #d6c8a1;
+  border-radius: 0;
+  font-size: 15px;
+  box-shadow: 3px 3px 0 var(--game-border);
+}
+.mayor-app .civic-works-issues button:hover {
+  border-color: var(--game-gold);
+}
+.mayor-app .civic-works-sites article > p.civic-works-clear {
+  color: var(--game-lime);
+  font-size: 13px;
+}
+
+@media (max-width: 1100px) {
+  .mayor-app .civic-request-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mayor-app .civic-budget-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  }
+  .mayor-app .civic-funding-levels {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .mayor-app .civic-funding-levels > button {
+    flex: 1;
+  }
+  .mayor-app .civic-works-desk > header {
+    flex-wrap: wrap;
+  }
+  .mayor-app .citizen-chat-page .civic-page-heading h1 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 750px) {
+  .mayor-app .civic-page {
+    padding: 22px 15px 30px;
+  }
+  .mayor-app .civic-page-heading {
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .mayor-app .civic-page-heading h1,
+  .mayor-app .citizen-chat-page .civic-page-heading h1 {
+    font-size: 20px;
+  }
+  .mayor-app .civic-page-heading p {
+    font-size: 15px;
+  }
+  .mayor-app .civic-filter-bar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .mayor-app .civic-segments {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .mayor-app .civic-segments button {
+    padding: 9px;
+    font-size: 12px;
+  }
+  .mayor-app .civic-search {
+    width: 100%;
+    min-width: 0;
+  }
+  .mayor-app
+    :is(
+      .civic-request-grid,
+      .civic-budget-layout,
+      .civic-journal-layout,
+      .civic-catalog-options,
+      .civic-handbook-grid
+    ) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mayor-app .civic-request-tile {
+    padding: 17px;
+  }
+  .mayor-app .civic-budget-ledger {
+    padding: 20px;
+  }
+  .mayor-app .civic-journal-chart > div:first-child {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .mayor-app .civic-chart-legend {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .mayor-app .civic-ledger > article {
+    padding: 15px;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .mayor-app .civic-ledger-top {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .mayor-app .civic-modal-backdrop {
+    padding: 12px;
+  }
+  .mayor-app .civic-modal {
+    max-height: calc(100dvh - 24px);
+    box-shadow: 5px 5px 0 var(--game-border);
+  }
+  .mayor-app .civic-modal-content {
+    padding: 21px 16px;
+  }
+  .mayor-app .civic-modal-content > h2 {
+    font-size: 18px;
+  }
+  .mayor-app .civic-letter-author {
+    gap: 9px;
+  }
+  .mayor-app .civic-letter-author > div {
+    min-width: 0;
+  }
+  .mayor-app .civic-letter-author b {
+    font-size: 14px;
+  }
+  .mayor-app .civic-letter-author > div:last-child {
+    max-width: none;
+    margin-left: 0;
+    gap: 12px;
+  }
+  .mayor-app .civic-letter blockquote {
+    padding: 15px;
+    font-size: 17px;
+  }
+  .mayor-app .civic-letter-choices-heading {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .mayor-app .civic-letter-options > button {
+    padding: 14px;
+  }
+  .mayor-app .civic-inline-paused {
+    flex-wrap: wrap;
+  }
+  .mayor-app .civic-catalog-list summary {
+    padding: 12px;
+    gap: 9px;
+  }
+  .mayor-app .civic-catalog-list summary > .civic-pill {
+    display: none;
+  }
+  .mayor-app .civic-catalog-list details > div {
+    padding: 0 13px 16px;
+  }
+  .mayor-app .civic-election-approval > b {
+    font-size: 44px;
+  }
+  .mayor-app .civic-election-stats b {
+    font-size: 24px;
+  }
+  .mayor-app .civic-election-links {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .mayor-app .citizen-chat-page {
+    padding: 15px 12px;
+  }
+  .mayor-app .citizen-conversation > header {
+    flex-wrap: wrap;
+  }
+  .mayor-app .citizen-conversation > header h2 {
+    font-size: 13px;
+  }
+  .mayor-app .citizen-presence {
+    font-size: 11px;
+  }
+  .mayor-app .citizen-introduction p,
+  .mayor-app .citizen-reply > p {
+    font-size: 15px;
+  }
+  .mayor-app .citizen-suggestions > button {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+  .mayor-app .citizen-user-bubble,
+  .mayor-app p.citizen-user-bubble {
+    font-size: 16px;
+  }
+  .mayor-app .citizen-composer-controls {
+    flex-wrap: wrap;
+  }
+  .mayor-app .citizen-composer-controls > label {
+    flex: 1;
+  }
+  .mayor-app .citizen-composer-controls select {
+    max-width: 120px;
+  }
+  .mayor-app .citizen-composer-controls > .civic-primary {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .mayor-app .citizen-connection-note {
+    flex-wrap: wrap;
+  }
+  .mayor-app .citizen-connection-note p {
+    flex-basis: 70%;
+  }
+  .mayor-app p.citizen-composer-help {
+    font-size: 11px;
+  }
+  .mayor-app .civic-works-desk {
+    padding: 15px;
+  }
+  .mayor-app .civic-works-desk > header > div:not(.civic-works-emblem) {
+    flex: 1;
+    min-width: 180px;
+  }
+  .mayor-app .civic-works-desk h2 {
+    font-size: 15px;
+  }
+  .mayor-app .civic-works-count {
+    white-space: normal;
+  }
+  .mayor-app .civic-works-sites {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mayor-app .civic-works-sites > article {
+    padding: 14px;
+  }
+  .mayor-app .civic-letter-site {
+    padding: 12px;
+  }
+}

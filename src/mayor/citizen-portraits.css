@@ -1,0 +1,10 @@
+.citizen-portrait { display: block; flex: 0 0 auto; overflow: visible; image-rendering: pixelated; }
+.living-person-head .citizen-portrait { filter: drop-shadow(0 2px 0 #324c5a12); }
+.living-person-head .citizen-mood { display: inline-flex; align-items: center; gap: 5px; margin-top: 5px; font-size: 10px; font-weight: 650; color: #6b7b86; }
+.citizen-mood::before { content: ''; width: 5px; height: 5px; background: currentColor; border-radius: 1px; }
+.citizen-mood.is-happy, .citizen-mood.is-grateful { color: #547f71; }
+.citizen-mood.is-concerned { color: #977642; }
+.citizen-mood.is-angry { color: #a66960; }
+.world-citizen-badge { display: flex; align-items: center; gap: 8px; width: max-content; max-width: 200px; padding: 7px 10px 7px 7px; border: 1px solid #c5d1d6; border-radius: 9px; background: #f9fbf9f5; box-shadow: 0 4px 14px #33495720; color: #344c5b; pointer-events: none; user-select: none; }
+.world-citizen-badge strong { display: block; font: 650 11px/1.4 system-ui, sans-serif; }
+.world-citizen-badge span { display: block; margin-top: 2px; font: 500 10px/1.3 system-ui, sans-serif; color: #73828c; }

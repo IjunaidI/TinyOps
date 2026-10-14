@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env*
+*.local
+.DS_Store
+
+*.tsbuildinfo
+
+__pycache__/
+
+# Local video renders, posters, and source media
+exports/

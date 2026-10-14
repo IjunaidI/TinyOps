@@ -1,0 +1,1596 @@
+/* Pixel artwork and game controls use readable native sans-serif typography. */
+.mayor-app {
+  --game-bg: #e9edf2;
+  --game-panel: #f7f8fb;
+  --game-panel-raised: #e0e7ef;
+  --game-border: #aab7c8;
+  --game-line: #c8d1de;
+  --game-text: #314258;
+  --game-muted: #66768b;
+  --game-cyan: #3d7c88;
+  --game-lime: #54785a;
+  --game-gold: #8a7037;
+  --game-pink: #996e81;
+  --game-danger: #ac5e58;
+  --game-cyan-soft: #d9eaee;
+  --game-lime-soft: #e2ebdc;
+  --game-gold-soft: #f1e8cc;
+  --game-pink-soft: #eee0e7;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-body);
+  --ink: var(--game-text);
+  --muted: var(--game-muted);
+  --line: var(--game-line);
+  --paper: var(--game-panel);
+  --green: var(--game-lime);
+  --coral: var(--game-pink);
+  color-scheme: light;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--game-text);
+  background-color: var(--game-bg);
+  background-image:
+    linear-gradient(#799ee709 1px, transparent 1px),
+    linear-gradient(90deg, #799ee709 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.mayor-app ::selection {
+  background: var(--game-cyan-soft);
+  color: var(--game-text);
+}
+.mayor-app * {
+  scrollbar-width: thin;
+  scrollbar-color: #aebecf #e3eaf1;
+}
+.mayor-app :is(h1, h2) {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+.mayor-app :is(h3, h4) {
+  font-family: var(--font-body);
+  letter-spacing: 0;
+}
+.mayor-app :is(button, input, textarea, select, summary) {
+  border-radius: 0;
+}
+.mayor-app :is(button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid var(--game-cyan);
+  outline-offset: 3px;
+}
+.mayor-app button {
+  transition:
+    background-color 0.12s,
+    color 0.12s,
+    box-shadow 0.12s,
+    transform 0.12s;
+}
+.mayor-app button:hover:not(:disabled) {
+  filter: none;
+}
+.mayor-app button:disabled {
+  opacity: 0.48;
+}
+.mayor-app :is(input, textarea, select) {
+  accent-color: var(--game-lime);
+}
+.mayor-app :is(input, textarea)::placeholder {
+  color: #6d7d90;
+  opacity: 1;
+}
+.mayor-app svg:not(.pixel-art):not(.pixel-icon) {
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+.mayor-app .positive {
+  color: var(--game-lime);
+}
+.mayor-app .negative {
+  color: var(--game-danger);
+}
+.pixel-icon,
+.pixel-art {
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+  flex-shrink: 0;
+}
+.civic-dot {
+  border-radius: 0;
+  width: 6px;
+  height: 6px;
+  box-shadow: 1px 1px 0 #c4cedb;
+}
+.civic-eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  color: var(--game-muted);
+  line-height: 1.6;
+}
+.civic-primary,
+.civic-secondary {
+  border: 2px solid var(--game-border);
+  border-radius: 0;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 11px 16px;
+}
+.civic-primary {
+  color: var(--game-text);
+  background: var(--game-lime-soft);
+  box-shadow:
+    inset 0 2px #ffffff,
+    0 4px 0 #c4cedb,
+    0 6px 0 #c4cedb;
+}
+.civic-primary:hover:not(:disabled) {
+  background: #d7e4cc;
+  box-shadow:
+    inset 0 2px #ffffff,
+    0 4px 0 #c4cedb,
+    0 6px 0 #c4cedb;
+}
+.civic-primary:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 2px #ffffff,
+    0 1px 0 #c4cedb;
+}
+.civic-secondary {
+  color: var(--game-cyan);
+  background: var(--game-panel-raised);
+  box-shadow:
+    inset 0 2px #ffffff,
+    0 3px 0 #c4cedb;
+}
+.civic-secondary:hover:not(:disabled) {
+  background: #d7e2ee;
+}
+.civic-secondary small {
+  color: var(--game-muted);
+  font-size: 12px;
+}
+.civic-icon {
+  border: 1px solid #c8d1de;
+  color: var(--game-muted);
+  background: #f7f8fb;
+  box-shadow: 2px 2px 0 #c4cedb;
+}
+.civic-icon:hover {
+  background: #d7e2ee;
+  color: var(--game-text);
+}
+.civic-text-button {
+  color: var(--game-cyan);
+  font-size: 14px;
+}
+.civic-pill {
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  background: #e5ebf3;
+  color: #536a85;
+  border: 1px solid #c3cedb;
+  letter-spacing: 0.3px;
+}
+.civic-pill.urgent,
+.civic-pill.expired {
+  background: #f2e2df;
+  color: #a55f59;
+  border-color: #d4afaa;
+}
+.civic-pill.important {
+  background: #f1ead9;
+  color: #8a7037;
+  border-color: #d7c9a6;
+}
+.civic-pill.resolved {
+  background: #e2ebdf;
+  color: #54785a;
+  border-color: #b8cbb0;
+}
+.civic-paper {
+  background: var(--game-panel);
+  border: 2px solid var(--game-border);
+  border-radius: 0;
+  box-shadow:
+    inset 0 2px #ffffff,
+    4px 4px 0 #c4cedb;
+}
+.civic-meter,
+.civic-meter > i {
+  border-radius: 0;
+}
+.civic-meter {
+  height: 7px;
+  background: #dbe2ec;
+  box-shadow: 0 1px 0 #c4cedb;
+}
+.civic-meter > i {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 7px,
+    #0b172d99 7px 9px
+  );
+  transition: width 0.35s steps(12);
+}
+
+/* HUD: resource cards, cartridge tabs, and transport controls. */
+.civic-header {
+  background: #f2f5f8;
+  border-bottom: 3px solid #aab7c8;
+  box-shadow: inset 0 -1px #ffffff;
+  height: 68px;
+  padding: 0 24px;
+  gap: 18px;
+}
+.civic-logo {
+  border-radius: 0;
+  width: 38px;
+  height: 38px;
+  color: var(--game-gold);
+  background: #dce6ef;
+  border: 2px solid #aab7c8;
+  box-shadow:
+    inset 0 2px #ffffff,
+    3px 3px 0 #c4cedb;
+}
+.civic-brand > b {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--game-lime);
+  text-shadow: none;
+}
+.civic-brand > b > span {
+  color: var(--game-cyan);
+}
+.civic-edition {
+  color: #66768b;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  padding-left: 18px;
+  margin-left: 6px;
+  line-height: 1.7;
+  max-width: 105px;
+}
+.civic-header-actions {
+  gap: 9px;
+}
+.civic-chat-link {
+  background: var(--game-cyan-soft);
+  color: var(--game-text);
+  border: 2px solid var(--game-border);
+  box-shadow:
+    inset 0 2px #ffffff,
+    0 3px 0 #c4cedb;
+  font-size: 14px;
+  padding: 8px 12px;
+}
+.civic-chat-link:hover {
+  background: #d0e5e9;
+}
+.civic-term > span {
+  color: var(--game-gold);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.civic-term strong {
+  font-size: 21px;
+  color: var(--game-text);
+}
+.civic-term small {
+  color: var(--game-muted);
+  font-size: 14px;
+}
+.civic-term > i {
+  height: 5px;
+  border-radius: 0;
+  background: #d9e0e9;
+  box-shadow: 0 1px #c4cedb;
+  margin-top: 5px;
+}
+.civic-term > i b {
+  height: 5px;
+  background: #b2a071;
+}
+.civic-clock-controls {
+  background: #dbe3ed;
+  border: 2px solid #aab7c8;
+  border-radius: 0;
+  gap: 3px;
+}
+.civic-clock-controls button {
+  color: var(--game-muted);
+  font-size: 14px;
+  border-radius: 0;
+  height: 27px;
+}
+.civic-clock-controls button.active {
+  background: #cad9e5;
+  color: var(--game-text);
+  box-shadow: inset 0 2px #ffffff;
+}
+.civic-clock-controls > button:first-child {
+  color: var(--game-lime);
+  border-color: #c8d1de;
+}
+.civic-stats {
+  background: #e9edf2;
+  border-bottom: 2px solid #aab7c8;
+  padding: 13px 24px;
+  gap: 10px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.civic-stat,
+.civic-stat:last-child {
+  --resource: var(--game-pink);
+  padding: 10px 14px 11px;
+  border: 2px solid #aab7c8;
+  background: #f7f8fb;
+  box-shadow:
+    inset 0 3px var(--resource),
+    2px 2px #c4cedb;
+}
+.civic-stat:nth-child(2) {
+  --resource: var(--game-gold);
+}
+.civic-stat:nth-child(3) {
+  --resource: var(--game-cyan);
+}
+.civic-stat:nth-child(4) {
+  --resource: var(--game-lime);
+}
+.civic-stat:nth-child(5) {
+  --resource: #827496;
+}
+.mayor-app .civic-stat:disabled {
+  opacity: 1;
+}
+.civic-stat > div:first-child,
+.civic-stat.coral > div:first-child,
+.civic-stat.green > div:first-child {
+  color: var(--resource);
+  gap: 7px;
+}
+.civic-stat > div:first-child > span {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+.civic-stat > strong {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--resource);
+  margin: 7px 0 5px;
+}
+.civic-stat > small {
+  color: #66768b;
+  font-size: 12px;
+}
+.civic-stat > .civic-meter {
+  margin-top: 9px;
+  max-width: none;
+}
+.civic-nav {
+  background: #edf1f6;
+  border-bottom: 3px solid #aab7c8;
+  height: 51px;
+  padding: 0 24px;
+  gap: 10px;
+}
+.civic-nav > div {
+  gap: 5px;
+}
+.civic-nav-short {
+  display: none;
+}
+.civic-nav > div > button {
+  color: #66768b;
+  font-size: 14px;
+  padding: 0 13px;
+  gap: 7px;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+.civic-nav > div > button:hover {
+  background: #dce7ef;
+  color: #314258;
+}
+.civic-nav > div > button.selected {
+  color: var(--game-lime);
+  background: #dce8e9;
+  border-color: #c8d1de;
+  font-weight: 500;
+}
+.civic-nav > div > button.selected:after {
+  bottom: -3px;
+  height: 4px;
+  background: var(--game-lime-soft);
+}
+.civic-nav > div > button > b {
+  background: var(--game-pink-soft);
+  color: #715969;
+  font-size: 12px;
+  border-radius: 0;
+  padding: 1px 5px;
+}
+.civic-nav .civic-catalog-link {
+  font-size: 13px;
+}
+.civic-state {
+  color: var(--game-lime);
+  font-size: 12px;
+}
+.civic-state.paused {
+  color: var(--game-gold);
+}
+.civic-nav .civic-nav-right {
+  gap: 9px;
+}
+
+/* Playfield and quest/cabinet panels. */
+.civic-overview {
+  gap: 14px;
+  padding: 16px 22px 0;
+  grid-template-columns: 246px minmax(0, 1fr) 274px;
+  grid-template-rows: minmax(0, 1fr) 40px;
+}
+.civic-panel-heading {
+  background: #e3eaf2;
+  border-bottom: 2px solid #aab7c8;
+  box-shadow: inset 0 2px #ffffff;
+  padding: 16px 14px;
+}
+.civic-panel-heading > svg {
+  color: var(--game-cyan);
+}
+.civic-panel-heading h2 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: #314258;
+  line-height: 1.5;
+  margin-top: 5px;
+  letter-spacing: -0.3px;
+}
+.civic-panel-heading h2 > span {
+  font: 13px var(--font-body);
+  color: #314258;
+  background: var(--game-gold-soft);
+  padding: 2px 5px;
+  border-radius: 0;
+}
+.civic-panel-heading .civic-eyebrow {
+  color: var(--game-cyan);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.civic-request-row {
+  border-bottom: 1px solid #c3cedb;
+  padding: 14px 12px;
+  gap: 10px;
+}
+.civic-request-row:hover {
+  background: #e8eef5;
+}
+.civic-category-symbol {
+  border-radius: 0;
+  background: #e5edde;
+  color: #54785a;
+  border: 1px solid #c3cedb;
+  box-shadow: 2px 2px #c4cedb;
+}
+.civic-request-row .civic-category-symbol {
+  border-radius: 0;
+}
+.category-health,
+.category-emergency {
+  background: #f0e3ea;
+  color: #996e81;
+  border-color: #d8becd;
+}
+.category-authority,
+.category-safety {
+  background: #dfebf0;
+  color: #3d7c88;
+  border-color: #b7cbd6;
+}
+.category-education,
+.category-community {
+  background: #e9e4ee;
+  color: #7c6c94;
+  border-color: #c7bcd5;
+}
+.category-housing,
+.category-economy {
+  background: #eee8d9;
+  color: #8a7037;
+  border-color: #d6caaa;
+}
+.civic-request-row small {
+  color: #66768b;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+}
+.civic-request-row b {
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+.civic-request-row > span > span {
+  font-size: 12px;
+  color: var(--game-gold);
+}
+.civic-request-row > svg {
+  color: var(--game-cyan);
+}
+.civic-panel-link {
+  background: #e2ebf1;
+  border-top: 2px solid #aab7c8;
+  color: var(--game-cyan);
+  font-size: 14px;
+  padding: 12px;
+}
+.civic-panel-link:hover {
+  background: #d7e6ed;
+}
+.civic-term-goal {
+  border-radius: 0;
+  background: #e6ede3;
+  border: 1px solid #c3cedb;
+  box-shadow: inset 3px 0 var(--game-lime);
+  color: var(--game-lime);
+  padding: 12px;
+}
+.civic-term-goal > span {
+  color: #54785a;
+  font-size: 14px;
+}
+.civic-term-goal b {
+  color: var(--game-lime);
+  font: 600 11px var(--font-display);
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+.civic-term-goal small {
+  color: #66768b;
+  font-size: 11px;
+}
+.civic-city-view {
+  border-radius: 0;
+  border: 2px solid #c3cedb;
+  box-shadow:
+    4px 4px #c4cedb,
+    inset 0 2px #ffffff;
+  background: #e2e9ef;
+}
+.civic-city-caption {
+  left: 16px;
+  top: 16px;
+  max-width: calc(100% - 75px);
+  background: #f7f9fce8;
+  border-left: 3px solid var(--game-cyan);
+  padding: 9px 12px;
+  box-shadow: 3px 3px #c4cedb;
+}
+.civic-city-caption > .civic-eyebrow {
+  color: var(--game-cyan);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+}
+.civic-city-caption h2 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--game-text);
+  margin-top: 5px;
+  letter-spacing: -0.3px;
+}
+.civic-city-caption p {
+  color: #536980;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.civic-city-view.is-evening .civic-city-caption h2 {
+  color: var(--game-text);
+}
+.civic-city-view.is-evening .civic-city-caption > span,
+.civic-city-view.is-evening .civic-city-caption > p {
+  color: var(--game-cyan);
+}
+.civic-map-controls {
+  top: 16px;
+  right: 12px;
+  gap: 7px;
+}
+.civic-map-controls > button {
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  border: 2px solid #aab7c8;
+  background: #e0e7ef;
+  color: var(--game-cyan);
+  box-shadow:
+    inset 0 2px #ffffff,
+    2px 2px #c4cedb;
+}
+.civic-map-controls > button:hover,
+.civic-map-controls > button[aria-pressed="true"] {
+  background: var(--game-cyan-soft);
+  color: var(--game-text);
+  border-color: #aab7c8;
+  box-shadow:
+    inset 0 2px #ffffff,
+    2px 2px #c4cedb;
+}
+.civic-districts {
+  gap: 7px;
+  left: 12px;
+  right: 12px;
+  bottom: 31px;
+}
+.civic-districts > button {
+  background: #f4f7fbf5;
+  border: 2px solid #c3cedb;
+  border-radius: 0;
+  color: var(--game-text);
+  box-shadow:
+    inset 0 2px #ffffff,
+    2px 2px #c4cedb;
+  padding: 9px;
+}
+.civic-districts > button:hover {
+  background: #e4eef3;
+}
+.civic-districts > button.selected {
+  background: #d5e5e9;
+  border-color: var(--game-cyan);
+}
+.civic-districts > button > span {
+  color: #536980;
+  font-size: 12px;
+  gap: 5px;
+}
+.civic-districts > button > b {
+  color: #314258;
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: -0.3px;
+  font-weight: 600;
+  margin: 6px 0 8px;
+}
+.civic-districts > button small {
+  color: #66768b;
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+.civic-districts .civic-meter {
+  height: 5px;
+}
+.civic-map-footnote,
+.civic-city-view.is-evening .civic-map-footnote {
+  color: #536980;
+  font-size: 11px;
+  text-shadow: none;
+  background: #e7edf2e8;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+  letter-spacing: 0;
+}
+.civic-construction-notice {
+  border: 2px solid #aab7c8;
+  border-radius: 0;
+  color: #635634;
+  background: var(--game-gold-soft);
+  box-shadow:
+    inset 0 2px #ffffff,
+    3px 3px #c4cedb;
+  font-size: 13px;
+  padding: 7px 10px;
+  bottom: 139px;
+  max-width: calc(100% - 26px);
+}
+.civic-construction-notice > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.civic-cabinet {
+  padding: 16px;
+}
+.civic-mayor-status {
+  border-color: #c8d1de;
+  padding-bottom: 14px;
+}
+.civic-ai-orb {
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+  background: #e2eaf1;
+  border: 2px solid #aab7c8;
+  box-shadow:
+    inset 0 2px #ffffff,
+    3px 3px #c4cedb;
+  color: var(--game-cyan);
+}
+.civic-ai-orb.thinking {
+  animation: pixelThink 1.2s steps(2) infinite;
+}
+@keyframes pixelThink {
+  50% {
+    border-color: var(--game-cyan);
+  }
+}
+.civic-mayor-status .civic-eyebrow {
+  color: #66768b;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.civic-mayor-status select {
+  color: var(--game-lime);
+  font-size: 17px;
+  background: transparent;
+  font-weight: 500;
+  max-width: 184px;
+}
+.civic-mayor-status select option {
+  background: #f7f8fb;
+  color: #314258;
+}
+.civic-mayor-status small {
+  color: var(--game-muted);
+  font-size: 11px;
+}
+.civic-mayor-activity {
+  border-color: #c8d1de;
+  background: #e9edf2;
+  padding: 10px;
+  margin-top: 10px;
+  border-left: 2px solid var(--game-cyan);
+}
+.civic-mayor-activity > span {
+  color: var(--game-cyan);
+  font-size: 12px;
+}
+.civic-mayor-activity > p {
+  color: #536980;
+  font-size: 13px;
+}
+.civic-mayor-activity > small {
+  color: #66768b;
+  font-size: 12px;
+}
+.civic-ai-meta {
+  border-color: #c8d1de;
+  color: #66768b;
+  font-size: 11px;
+  gap: 7px;
+}
+.civic-latest-decision {
+  border-color: #c8d1de;
+  padding: 15px 0;
+}
+.civic-latest-decision > .civic-eyebrow {
+  color: var(--game-gold);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.civic-latest-decision h3 {
+  color: var(--game-text);
+  font-size: 16px;
+  line-height: 1.35;
+}
+.civic-latest-decision > p {
+  color: #536980;
+  font-size: 14px;
+}
+.civic-latest-decision > small {
+  color: #66768b;
+  font-size: 12px;
+}
+.civic-latest-decision > div {
+  color: #66768b;
+  font-size: 11px;
+}
+.civic-actor {
+  font-size: 12px;
+  color: var(--game-muted);
+}
+.civic-actor.actor-jev {
+  color: var(--game-cyan);
+}
+.civic-actor.actor-local {
+  color: #7c6c94;
+}
+.civic-actor.actor-you {
+  color: var(--game-gold);
+}
+.civic-service-pulse {
+  border-color: #c8d1de;
+  padding: 15px 0;
+}
+.civic-service-pulse > div:first-child {
+  color: var(--game-pink);
+}
+.civic-service-pulse .civic-eyebrow {
+  color: var(--game-pink);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.civic-pulse-row {
+  color: #66768b;
+  font-size: 12px;
+  gap: 7px;
+}
+.civic-pulse-row > span {
+  color: #536980;
+  font-size: 12px;
+  width: 72px;
+}
+.civic-pulse-row b {
+  color: #42566f;
+  font: 13px var(--font-body);
+}
+.civic-pulse-row > .civic-meter {
+  height: 5px;
+}
+.civic-brief {
+  border-color: #c8d1de;
+}
+.civic-brief > label {
+  color: var(--game-cyan);
+  font-size: 15px;
+}
+.civic-brief > p,
+.civic-last-brief {
+  color: #66768b;
+  font-size: 12px;
+}
+.civic-brief textarea {
+  color: var(--game-text);
+  background: #f9fbfd;
+  border: 2px solid #aab7c8;
+  box-shadow: inset 0 1px #ffffff;
+  font-size: 14px;
+  padding: 10px;
+}
+.civic-brief textarea::placeholder {
+  color: #6d7d90;
+}
+.civic-brief > div {
+  color: #66768b;
+  font-size: 11px;
+}
+.civic-brief button {
+  color: var(--game-cyan);
+  font-size: 13px;
+}
+.civic-news-strip {
+  border-color: #c8d1de;
+  color: #66768b;
+}
+.civic-news-strip > div {
+  color: var(--game-cyan);
+}
+.civic-news-strip > div > b {
+  font: 600 11px var(--font-display);
+  letter-spacing: 0;
+}
+.civic-news-strip > button {
+  border-color: #c8d1de;
+}
+.civic-news-strip > button > span {
+  color: var(--game-gold);
+  font-size: 11px;
+}
+.civic-news-strip > button > b {
+  color: #66768b;
+  font-size: 11px;
+}
+.civic-footer {
+  color: #66768b;
+  background: #dfe6ee;
+  border-top: 2px solid #aab7c8;
+  font-size: 11px;
+  min-height: 28px;
+}
+.civic-footer > span:first-child,
+.civic-footer > button {
+  color: #66768b;
+  font-size: 11px;
+}
+.civic-issue {
+  background: #f0e1e3;
+  color: #925d59;
+  border-color: #cbb1b9;
+  font-size: 14px;
+}
+.civic-issue > button {
+  color: #536a85;
+  border-color: #cbb1b9;
+  background: #e8d9de;
+  font-size: 13px;
+}
+.civic-toast {
+  background: #e5eee4;
+  border: 2px solid #aab7c8;
+  border-radius: 0;
+  color: #54785a;
+  box-shadow:
+    inset 0 2px #ffffff,
+    4px 4px #c4cedb;
+  font-size: 14px;
+}
+.civic-toast > button {
+  color: #54785a;
+}
+.civic-site-details {
+  background: #f7f8fbf5;
+  color: #314258;
+  border: 2px solid #aab7c8;
+  box-shadow:
+    inset 0 2px #ffffff,
+    4px 4px #c4cedb;
+  font-size: 13px;
+}
+.civic-site-details strong {
+  color: var(--game-gold);
+}
+.civic-site-details button {
+  color: var(--game-cyan);
+}
+
+/* Opening screen: a game title, mission choices, and a pixel postcard. */
+.mayor-lobby {
+  background-color: #e9edf2;
+}
+.civic-welcome {
+  background: #f7f8fbf2;
+  padding: 24px;
+  left: 4%;
+  top: 13%;
+  width: 415px;
+  border: 2px solid #aab7c8;
+  box-shadow:
+    inset 0 3px #ffffff,
+    6px 6px #c4cedb;
+}
+.civic-welcome > .civic-eyebrow {
+  color: var(--game-cyan);
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+.civic-welcome h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.13;
+  font-weight: 600;
+  color: var(--game-text);
+  letter-spacing: -0.3px;
+  text-shadow: none;
+}
+.civic-welcome h1 em {
+  color: var(--game-lime);
+  font-style: normal;
+  font-weight: 600;
+}
+.civic-welcome > p {
+  color: #66768b;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 17px 0;
+}
+.civic-mandate-label {
+  color: var(--game-gold);
+  font: 600 11px var(--font-display);
+  margin-bottom: 10px;
+  letter-spacing: 0;
+}
+.civic-mandates {
+  gap: 8px;
+}
+.civic-mandates button {
+  border-radius: 0;
+  border: 2px solid #aab7c8;
+  color: #66768b;
+  background: #e9eef4;
+  box-shadow:
+    inset 0 2px #ffffff,
+    2px 2px #c4cedb;
+  padding: 10px;
+  gap: 7px;
+}
+.civic-mandates button.selected {
+  background: #e1eada;
+  border-color: #9cb28d;
+  color: #54785a;
+  box-shadow:
+    inset 0 2px #ffffff,
+    2px 2px #c4cedb;
+}
+.civic-mandates button:hover {
+  background: #dfe8f0;
+}
+.civic-mandates b {
+  font-size: 14px;
+  line-height: 1.25;
+}
+.civic-mandates small {
+  color: #66768b;
+  font-size: 11px;
+}
+.civic-start {
+  font-size: 16px;
+  padding: 13px;
+}
+.civic-start-secondary {
+  font-size: 13px;
+  gap: 11px;
+}
+.civic-start-secondary button {
+  color: #536980;
+}
+.civic-start-secondary > span {
+  background: #c8d1de;
+}
+.civic-lobby-facts {
+  border-color: #c8d1de;
+  padding-top: 15px;
+  margin-top: 20px;
+  gap: 20px;
+}
+.civic-lobby-facts > span {
+  color: #66768b;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.civic-lobby-facts b {
+  color: var(--game-gold);
+  font: 600 24px var(--font-display);
+}
+.civic-lobby-note {
+  color: var(--game-text);
+  background: #f7f8fbf5;
+  border: 2px solid #aab7c8;
+  border-radius: 0;
+  box-shadow:
+    inset 0 3px #ffffff,
+    5px 5px #c4cedb;
+  transform: none;
+}
+.civic-lobby-note > .civic-eyebrow {
+  color: var(--game-cyan);
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.civic-lobby-note > svg {
+  color: var(--game-gold);
+}
+.civic-lobby-note > p {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 20px;
+  color: #314258;
+}
+.civic-lobby-note > small {
+  color: #66768b;
+  font-size: 13px;
+}
+.civic-lobby-note > button {
+  border-color: #c8d1de;
+  color: var(--game-lime);
+  font-size: 13px;
+}
+.civic-lobby-bottom {
+  color: #66768b;
+  font-size: 11px;
+}
+.civic-lobby-bottom > button {
+  color: #3d7c88;
+  font-size: 12px;
+}
+.civic-loading,
+.mayor-loading {
+  background: #e9edf2;
+  color: #54785a;
+}
+
+@media (min-width: 1600px) {
+  .civic-overview {
+    grid-template-columns: 290px minmax(0, 1fr) 320px;
+  }
+  .civic-welcome {
+    width: 470px;
+    top: 16%;
+    padding: 30px;
+  }
+  .civic-welcome h1 {
+    font-size: 46px;
+  }
+  .civic-city-caption h2 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 1200px) {
+  .civic-header {
+    padding: 0 18px;
+    gap: 12px;
+  }
+  .civic-stats {
+    padding: 12px 18px;
+    gap: 8px;
+  }
+  .civic-stat,
+  .civic-stat:last-child {
+    padding: 10px;
+  }
+  .civic-stat > strong {
+    font-size: 22px;
+  }
+  .civic-stat > div:first-child > span {
+    font-size: 11px;
+  }
+  .civic-stat > small {
+    font-size: 11px;
+  }
+  .civic-nav {
+    padding: 0 18px;
+  }
+  .civic-nav > div > button {
+    padding: 0 9px;
+    font-size: 13px;
+    gap: 6px;
+  }
+  .civic-overview {
+    grid-template-columns: 206px minmax(0, 1fr) 235px;
+    padding: 14px 17px 0;
+    gap: 11px;
+  }
+  .civic-panel-heading {
+    padding: 13px 11px;
+  }
+  .civic-panel-heading h2 {
+    font-size: 13px;
+  }
+  .civic-cabinet {
+    padding: 13px;
+  }
+  .civic-mayor-status select {
+    font-size: 15px;
+    max-width: 152px;
+  }
+  .civic-ai-orb {
+    width: 34px;
+    height: 36px;
+  }
+  .civic-city-caption {
+    padding: 8px 9px;
+    left: 12px;
+    top: 12px;
+  }
+  .civic-city-caption h2 {
+    font-size: 15px;
+  }
+  .civic-city-caption p {
+    font-size: 11px;
+  }
+  .civic-districts > button > b {
+    font-size: 14px;
+    margin: 0;
+  }
+  .civic-districts > button > span {
+    font-size: 11px;
+  }
+  .civic-districts > button small {
+    font-size: 11px;
+  }
+  .civic-districts .civic-meter {
+    height: 4px;
+  }
+  .civic-construction-notice {
+    font-size: 12px;
+    bottom: 139px;
+  }
+}
+@media (max-width: 950px) {
+  .civic-brand > b {
+    font-size: 22px;
+  }
+  .civic-header-actions {
+    gap: 7px;
+  }
+  .civic-stats {
+    gap: 7px;
+  }
+  .civic-stat > strong {
+    font-size: 20px;
+  }
+  .civic-stat > div:first-child > span {
+    font-size: 11px;
+  }
+  .civic-workspace {
+    overflow: auto;
+  }
+  .civic-overview {
+    height: auto;
+    min-height: 100%;
+    grid-template-columns: 205px minmax(0, 1fr);
+    grid-template-rows: minmax(490px, 58vh) auto auto;
+  }
+  .civic-cabinet {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .civic-cabinet > .civic-mayor-status,
+  .civic-cabinet > .civic-mayor-activity,
+  .civic-cabinet > .civic-brief {
+    grid-column: 1 / -1;
+  }
+  .civic-news-strip {
+    grid-column: 1 / -1;
+  }
+  .civic-nav > div > button > .pixel-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .civic-stat > div:first-child > .pixel-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .civic-nav > div > button {
+    font-size: 12px;
+    padding: 0 8px;
+  }
+  .civic-nav .civic-nav-right {
+    display: none;
+  }
+  .civic-city-caption h2 {
+    font-size: 17px;
+  }
+  .civic-welcome {
+    left: 3%;
+    width: 375px;
+    padding: 20px;
+  }
+  .civic-welcome h1 {
+    font-size: 35px;
+  }
+  .civic-lobby-note {
+    width: 235px;
+    right: 3%;
+  }
+}
+@media (max-height: 760px) and (min-width: 751px) {
+  .civic-header {
+    height: 58px;
+  }
+  .civic-stats {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  .civic-stat,
+  .civic-stat:last-child {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .civic-stat > strong {
+    font-size: 21px;
+    margin: 5px 0;
+  }
+  .civic-stat > small {
+    font-size: 11px;
+  }
+  .civic-nav {
+    height: 44px;
+  }
+  .civic-overview {
+    padding-top: 12px;
+  }
+  .civic-welcome {
+    top: 11%;
+    padding: 18px 22px;
+  }
+  .civic-welcome h1 {
+    font-size: 32px;
+  }
+  .civic-welcome > p {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+  .civic-welcome > .civic-eyebrow {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+  .civic-mandates button {
+    min-height: 54px;
+    padding: 7px 9px;
+  }
+  .civic-lobby-facts {
+    margin-top: 13px;
+    padding-top: 10px;
+  }
+  .civic-lobby-facts b {
+    font-size: 19px;
+  }
+}
+@media (max-width: 750px) {
+  .civic-header {
+    height: 58px;
+    padding: 0 12px;
+    gap: 6px;
+  }
+  .civic-brand {
+    gap: 7px;
+  }
+  .civic-logo {
+    width: 29px;
+    height: 29px;
+  }
+  .civic-logo > svg {
+    width: 21px;
+    height: 21px;
+  }
+  .civic-brand > b {
+    font-size: 19px;
+    letter-spacing: -0.3px;
+  }
+  .civic-term {
+    margin-left: auto;
+  }
+  .civic-term strong {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  .civic-term small {
+    font-size: 11px;
+  }
+  .civic-header-actions {
+    gap: 5px;
+  }
+  .civic-clock-controls {
+    gap: 1px;
+    padding: 1px;
+  }
+  .civic-clock-controls button {
+    width: 21px;
+    height: 25px;
+    font-size: 11px;
+  }
+  .civic-chat-link {
+    padding: 5px;
+    min-width: 29px;
+    height: 29px;
+    box-shadow: 1px 2px #c4cedb;
+  }
+  .civic-stats {
+    display: flex;
+    padding: 10px 12px 12px;
+    gap: 8px;
+    overflow-x: auto;
+  }
+  .civic-stat,
+  .civic-stat:last-child {
+    flex: 0 0 145px;
+    padding: 10px;
+  }
+  .civic-stat > div:first-child > span {
+    font-size: 11px;
+  }
+  .civic-stat > strong {
+    font-size: 23px;
+    margin: 8px 0 6px;
+  }
+  .civic-stat > small {
+    font-size: 11px;
+  }
+  .civic-stat .pixel-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .civic-nav {
+    height: 53px;
+    padding: 0 8px;
+  }
+  .civic-nav > div {
+    gap: 0;
+    width: 100%;
+  }
+  .civic-nav > div > button {
+    font-size: 11px;
+    padding: 5px 6px;
+    gap: 4px;
+    flex: 1;
+  }
+  .civic-nav > div > button > .pixel-icon {
+    width: 17px;
+    height: 17px;
+  }
+  .civic-nav-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .civic-nav-short {
+    display: inline;
+    font-size: 11px;
+  }
+  .civic-nav > div > button > b {
+    font-size: 11px;
+  }
+  .civic-overview {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    gap: 14px;
+  }
+  .civic-city-view {
+    min-height: 455px;
+    height: 455px;
+    order: -1;
+  }
+  .civic-city-caption {
+    max-width: calc(100% - 61px);
+    top: 11px;
+    left: 10px;
+    padding: 8px;
+  }
+  .civic-city-caption > .civic-eyebrow {
+    font-size: 11px;
+  }
+  .civic-city-caption h2 {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .civic-city-caption p {
+    font-size: 11px;
+    max-width: 240px;
+  }
+  .civic-map-controls {
+    right: 9px;
+    top: 11px;
+  }
+  .civic-map-controls > button {
+    width: 30px;
+    height: 30px;
+  }
+  .civic-districts {
+    left: 8px;
+    right: 8px;
+    gap: 6px;
+    bottom: 29px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .civic-districts > button {
+    padding: 8px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+  .civic-districts > button > span {
+    font-size: 12px;
+  }
+  .civic-districts > button > b {
+    font-size: 15px;
+  }
+  .civic-construction-notice {
+    bottom: 143px;
+    font-size: 12px;
+    padding: 7px 8px;
+  }
+  .civic-panel-heading h2 {
+    font-size: 16px;
+  }
+  .civic-request-row b {
+    font-size: 16px;
+  }
+  .civic-cabinet {
+    display: block;
+    padding: 17px;
+  }
+  .civic-mayor-status select {
+    font-size: 18px;
+    max-width: none;
+  }
+  .civic-latest-decision h3 {
+    font-size: 17px;
+  }
+  .civic-latest-decision > small {
+    display: block;
+  }
+  .civic-service-pulse {
+    display: block;
+  }
+  .civic-pulse-row > span {
+    font-size: 14px;
+    width: 90px;
+  }
+  .civic-brief > p {
+    font-size: 13px;
+  }
+  .civic-footer {
+    font-size: 11px;
+    min-height: 31px;
+  }
+  .civic-footer > span:first-child,
+  .civic-footer > button {
+    font-size: 11px;
+  }
+  .civic-welcome {
+    width: auto;
+    left: auto;
+    top: auto;
+    padding: 20px;
+    margin: 20px 15px;
+    position: relative;
+  }
+  .civic-welcome h1 {
+    font-size: clamp(29px, 8vw, 42px);
+  }
+  .civic-welcome > p {
+    font-size: 16px;
+  }
+  .civic-lobby-note {
+    position: relative;
+    width: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: 15px;
+    padding: 20px;
+  }
+  .civic-lobby-bottom {
+    font-size: 11px;
+  }
+  .civic-lobby-facts b {
+    font-size: 24px;
+  }
+}
+@media (max-width: 380px) {
+  .civic-brand > b {
+    font-size: 16px;
+  }
+  .civic-brand {
+    gap: 4px;
+  }
+  .civic-logo {
+    width: 24px;
+    height: 27px;
+  }
+  .civic-header {
+    padding: 0 8px;
+  }
+  .civic-term strong {
+    font-size: 14px;
+  }
+  .civic-clock-controls button {
+    width: 19px;
+  }
+  .civic-nav > div > button {
+    padding: 5px 4px;
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mayor-app *,
+  .mayor-app *::before,
+  .mayor-app *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

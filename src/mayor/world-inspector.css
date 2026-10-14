@@ -1,0 +1,541 @@
+/* Management pages share the inspector's one scroll region. Import last. */
+.mayor-world-ui .world-inspector-body {
+  container: world-inspector / inline-size;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-padding-block: 16px;
+}
+.mayor-world-ui .world-inspector-body > *,
+.mayor-world-ui
+  .world-inspector-body
+  :is(
+    .civic-page,
+    .civic-budget-layout,
+    .civic-journal-layout,
+    .citizen-chat-layout
+  )
+  > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.mayor-world-ui .world-inspector-body :is(.civic-page, .citizen-chat-page) {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+}
+.mayor-world-ui .world-inspector-body p {
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.mayor-world-ui .world-inspector-body small {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.mayor-world-ui .world-inspector-body :is(h2, h3, h4, strong, button) {
+  overflow-wrap: anywhere;
+}
+.mayor-world-ui .world-inspector-body :is(input, select, textarea) {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Boxed mayor updates keep their own inset; plain sections share the gutter. */
+.mayor-world-ui .world-inspector-body .civic-mayor-status {
+  gap: 12px;
+}
+.mayor-world-ui .world-inspector-body .civic-mayor-status select {
+  margin-left: 0;
+}
+.mayor-world-ui .world-inspector-body .civic-mayor-activity {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  margin: 16px 0 0;
+}
+.mayor-world-ui
+  .world-inspector-body
+  .civic-mayor-activity
+  > :is(span, p, small) {
+  margin: 0;
+  min-width: 0;
+}
+.mayor-world-ui .world-inspector-body .civic-mayor-activity > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mayor-world-ui .world-inspector-body .civic-ai-meta {
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin: 4px 0 0;
+  padding-top: 12px;
+}
+.mayor-world-ui .world-inspector-body .civic-ai-meta > span {
+  min-width: 0;
+  max-width: 100%;
+}
+.mayor-world-ui .world-inspector-body .civic-latest-decision {
+  display: grid;
+  gap: 8px;
+}
+.mayor-world-ui .world-inspector-body .civic-latest-decision > * {
+  margin: 0;
+}
+.mayor-world-ui .world-inspector-body .civic-latest-decision > div {
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 4px;
+}
+.mayor-world-ui .world-inspector-body .civic-service-pulse > div:first-child {
+  margin-bottom: 12px;
+}
+.mayor-world-ui .world-inspector-body .civic-pulse-row:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.mayor-world-ui
+  .world-inspector-body
+  :is(
+    .civic-paper,
+    .civic-project-card,
+    .civic-budget-ledger,
+    .civic-journal-chart,
+    .civic-department
+  ) {
+  border-width: 1px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.mayor-world-ui
+  .world-inspector-body
+  :is(
+    .civic-budget-layout,
+    .civic-journal-layout,
+    .citizen-chat-layout,
+    .civic-works-sites
+  ) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+.mayor-world-ui .world-inspector-body .civic-page-heading > .civic-secondary {
+  margin-top: 8px;
+}
+.mayor-world-ui .world-inspector-body :is(.civic-filter-bar, .civic-segments) {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.mayor-world-ui .world-inspector-body .civic-segments {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+}
+.mayor-world-ui .world-inspector-body .civic-segments button {
+  padding: 8px 5px;
+  font-size: 11px;
+  white-space: normal;
+  line-height: 1.45;
+  min-width: 0;
+}
+.mayor-world-ui .world-inspector-body .civic-search {
+  box-sizing: border-box;
+  padding: 10px;
+}
+.mayor-world-ui .world-inspector-body .civic-effects {
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.mayor-world-ui .world-inspector-body .civic-effects > span {
+  font-size: 11px;
+  padding: 4px 6px;
+  white-space: normal;
+}
+
+/* The ledger and department controls use the panel width, not viewport width. */
+.mayor-world-ui .world-inspector-body .civic-budget-ledger {
+  padding: 17px;
+}
+.mayor-world-ui .world-inspector-body .civic-budget-ledger > h2 {
+  font-size: 35px;
+  margin-top: 12px;
+}
+.mayor-world-ui .world-inspector-body .civic-budget-ledger > p {
+  margin-bottom: 19px;
+}
+.mayor-world-ui .world-inspector-body .civic-budget-line {
+  gap: 12px;
+  font-size: 13px;
+  padding-block: 10px;
+}
+.mayor-world-ui .world-inspector-body .civic-budget-line > span {
+  min-width: 0;
+}
+.mayor-world-ui .world-inspector-body .civic-budget-line.total {
+  font-size: 16px;
+}
+.mayor-world-ui
+  .world-inspector-body
+  .living-budget-components
+  .civic-budget-line {
+  font-size: 12px;
+  padding-block: 8px;
+}
+.mayor-world-ui .world-inspector-body .civic-tax-options > button {
+  padding: 12px;
+  gap: 12px;
+  border-width: 1px;
+  border-radius: 6px;
+}
+.mayor-world-ui .world-inspector-body .civic-tax-options b {
+  font-size: 14px;
+}
+.mayor-world-ui .world-inspector-body .civic-department {
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 11px;
+  padding: 14px;
+}
+.mayor-world-ui .world-inspector-body .civic-department-icon {
+  width: 34px;
+  height: 36px;
+  border-width: 1px;
+  border-radius: 6px;
+}
+.mayor-world-ui .world-inspector-body .civic-funding-levels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-column: 1 / -1;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 3px;
+}
+.mayor-world-ui .world-inspector-body .civic-funding-levels > button {
+  padding: 9px 3px;
+  font-size: 11px;
+  min-width: 0;
+  line-height: 1.4;
+}
+.mayor-world-ui .world-inspector-body .civic-funding-levels small {
+  font-size: 10px;
+}
+.mayor-world-ui .world-inspector-body .civic-advice-note {
+  padding: 13px;
+  gap: 9px;
+}
+
+/* History remains a readable stack, with full reasons accessible. */
+.mayor-world-ui .world-inspector-body .civic-journal-chart {
+  padding: 14px;
+}
+.mayor-world-ui .world-inspector-body .civic-journal-chart > div:first-child {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.mayor-world-ui .world-inspector-body .civic-journal-chart h3 {
+  font-size: 15px;
+}
+.mayor-world-ui .world-inspector-body .civic-ledger > article {
+  grid-template-columns: 31px minmax(0, 1fr);
+  padding: 14px;
+  gap: 11px;
+}
+.mayor-world-ui .world-inspector-body .civic-ledger-top {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.mayor-world-ui .world-inspector-body .civic-ledger-top h3 {
+  flex-basis: 100%;
+  font-size: 14px;
+}
+.mayor-world-ui .world-inspector-body .civic-ledger > article > div > strong {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.mayor-world-ui .world-inspector-body .civic-section-title {
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 15px;
+}
+
+/* Building sites and project cards are never squeezed into desktop columns. */
+.mayor-world-ui .world-inspector-body .civic-works-desk {
+  padding: 14px;
+  margin-bottom: 18px;
+  border-width: 1px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.mayor-world-ui .world-inspector-body .civic-works-desk > header {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+.mayor-world-ui .world-inspector-body .civic-works-emblem {
+  width: 32px;
+  height: 34px;
+  border-width: 1px;
+  box-shadow: none;
+}
+.mayor-world-ui .world-inspector-body .civic-works-desk h2 {
+  font-size: 17px;
+  line-height: 1.4;
+}
+.mayor-world-ui .world-inspector-body .civic-works-desk header p {
+  font-size: 12px;
+  max-width: none;
+}
+.mayor-world-ui .world-inspector-body .civic-works-count {
+  grid-column: 1 / -1;
+  width: fit-content;
+  margin-left: 0;
+  font-size: 11px;
+  white-space: normal;
+}
+.mayor-world-ui .world-inspector-body .civic-works-sites > article {
+  padding: 13px;
+  border-width: 1px;
+  box-shadow: none;
+}
+.mayor-world-ui .world-inspector-body .civic-works-sites h3 {
+  font-size: 15px;
+  margin-bottom: 11px;
+}
+.mayor-world-ui .world-inspector-body .civic-works-issues button {
+  font-size: 12px;
+  padding: 10px 8px;
+  gap: 7px;
+  border-width: 1px;
+  box-shadow: none;
+}
+.mayor-world-ui .world-inspector-body .civic-works-issues button > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.mayor-world-ui .world-inspector-body .civic-project-art {
+  border-bottom-width: 1px;
+}
+.mayor-world-ui .world-inspector-body .civic-project-art > b {
+  font-size: 9px;
+}
+.mayor-world-ui .world-inspector-body .civic-project-body {
+  padding: 15px;
+}
+.mayor-world-ui .world-inspector-body .civic-project-body > p {
+  min-height: 0;
+  font-size: 13px;
+}
+.mayor-world-ui .world-inspector-body .civic-project-finance {
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  line-height: 1.5;
+}
+.mayor-world-ui .world-inspector-body .civic-project-body > button {
+  flex-wrap: wrap;
+  min-height: 40px;
+  gap: 6px;
+  padding: 10px;
+}
+
+/* Inline letters use the actual choice list classes from RequestDetail. */
+.mayor-world-ui .world-inspector-body .civic-letter-options {
+  gap: 10px;
+}
+.mayor-world-ui .world-inspector-body .civic-letter-options > button {
+  padding: 13px;
+  min-width: 0;
+  border-width: 1px;
+  border-radius: 7px;
+  box-shadow: none;
+}
+.mayor-world-ui .world-inspector-body .civic-letter-options h4 {
+  font-size: 14px;
+}
+.mayor-world-ui .world-inspector-body .civic-letter-options > button > p {
+  font-size: 13px;
+}
+.mayor-world-ui
+  .world-inspector-body
+  :is(.civic-letter-site, .civic-clarification, .civic-letter-expiry) {
+  padding: 13px;
+  gap: 9px;
+}
+.mayor-world-ui .world-inspector-body .civic-letter-choices-heading {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Chat expands into the outer scroll region; no inner page or log scrollbar. */
+.mayor-world-ui .world-inspector-body .citizen-chat-page {
+  gap: 16px;
+  display: flex;
+}
+.mayor-world-ui .world-inspector-body .citizen-chat-layout {
+  flex: none;
+  min-height: 0;
+  height: auto;
+}
+.mayor-world-ui
+  .world-inspector-body
+  :is(.citizen-conversation, .citizen-messages, .citizen-context) {
+  overflow: visible;
+  min-height: 0;
+  max-height: none;
+  height: auto;
+}
+.mayor-world-ui .world-inspector-body .citizen-conversation > header {
+  padding: 13px;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.mayor-world-ui .world-inspector-body .citizen-conversation > header h2 {
+  font-size: 19px;
+}
+.mayor-world-ui .world-inspector-body .citizen-conversation > header p {
+  font-size: 11px;
+}
+.mayor-world-ui .world-inspector-body .citizen-presence {
+  font-size: 10px;
+}
+.mayor-world-ui .world-inspector-body .citizen-messages {
+  flex: none;
+  padding: 14px;
+}
+.mayor-world-ui .world-inspector-body .citizen-introduction b {
+  font-size: 15px;
+}
+.mayor-world-ui .world-inspector-body .citizen-suggestions {
+  margin-left: 0;
+}
+.mayor-world-ui .world-inspector-body .citizen-suggestions > button {
+  font-size: 13px;
+  padding: 11px;
+  box-shadow: none;
+  border-width: 1px;
+  border-radius: 6px;
+}
+.mayor-world-ui
+  .world-inspector-body
+  :is(.citizen-user-bubble, .citizen-reply) {
+  max-width: 96%;
+  padding: 12px;
+  border-width: 1px;
+  border-radius: 7px;
+  font-size: 13px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.mayor-world-ui .world-inspector-body .citizen-reply {
+  border-left-width: 3px;
+}
+.mayor-world-ui .world-inspector-body .citizen-reply-heading {
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.mayor-world-ui
+  .world-inspector-body
+  .citizen-reply-heading
+  > span:first-child {
+  font-size: 13px;
+}
+.mayor-world-ui .world-inspector-body .citizen-connection-note {
+  padding: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top-width: 1px;
+}
+.mayor-world-ui .world-inspector-body .citizen-connection-note p {
+  min-width: 180px;
+  font-size: 12px;
+}
+.mayor-world-ui .world-inspector-body .citizen-composer {
+  padding: 14px;
+  border-top-width: 1px;
+}
+.mayor-world-ui .world-inspector-body .citizen-composer textarea {
+  min-height: 90px;
+  height: 90px;
+  max-height: 240px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.mayor-world-ui .world-inspector-body .citizen-composer-controls {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mayor-world-ui .world-inspector-body .citizen-composer-controls > label {
+  min-width: 0;
+  flex: 1 1 130px;
+}
+.mayor-world-ui .world-inspector-body .citizen-composer-controls select {
+  max-width: 100%;
+  font-size: 12px;
+}
+.mayor-world-ui
+  .world-inspector-body
+  .citizen-composer-controls
+  > .civic-primary {
+  flex: 1 0 100%;
+  justify-content: center;
+  font-size: 13px;
+  min-height: 40px;
+}
+.mayor-world-ui .world-inspector-body .citizen-context > .civic-paper {
+  padding: 15px;
+}
+.mayor-world-ui .world-inspector-body .citizen-context h2 {
+  font-size: 20px;
+  margin: 10px 0 17px;
+}
+.mayor-world-ui .world-inspector-body .citizen-context-rule {
+  margin-top: 11px;
+  padding-top: 11px;
+}
+.mayor-world-ui .world-inspector-body .citizen-outcomes {
+  padding: 18px 4px 4px;
+}
+
+/* Avoid double padding when City life supplies its own compact inspector. */
+.mayor-world-ui .world-inspector-body .living-city.is-compact {
+  padding: 0 0 12px;
+}
+.mayor-world-ui .world-inspector-body .living-briefing {
+  margin-top: 17px;
+  padding: 14px;
+}
+.mayor-world-ui .world-inspector-body .living-briefing-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 13px;
+}
+.mayor-world-ui .world-inspector-body .living-briefing > header {
+  align-items: flex-start;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+@container world-inspector (max-width: 330px) {
+  .mayor-world-ui .world-inspector-body .civic-budget-ledger {
+    padding: 13px;
+  }
+  .mayor-world-ui .world-inspector-body .civic-budget-line {
+    font-size: 12px;
+  }
+  .mayor-world-ui .world-inspector-body .civic-ledger > article {
+    grid-template-columns: 25px minmax(0, 1fr);
+    gap: 9px;
+    padding: 12px;
+  }
+}
